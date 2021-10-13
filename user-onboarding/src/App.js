@@ -20,7 +20,7 @@ const initialFormErrors = {
  
 }
 const initialUsers = []
-const initialDisabled = true
+const initialDisabled = false
 function App() {
   const [users, setUsers] = useState(initialUsers)          // array of friend objects
   const [formValues, setFormValues] = useState(initialFormValues) // object
@@ -30,9 +30,11 @@ function App() {
   const getUsers = () => {
     axios.get('https://reqres.in/api/users')
       .then(res => {
-        setUsers(res.data);
+        
+        setUsers(res.data.data)
+
       }).catch(err => {
-        console.error(err);
+        console.error(err)
       })
   }
 
@@ -40,11 +42,13 @@ function App() {
   
     axios.post('https://reqres.in/api/users', newUser)
       .then(res => {
-        setUsers([res.data, ...users]);
+        setUsers([res.data, ...users])
+        console.log('unewuuuuser')
+        console.log(newUser)
       }).catch(err => {
-        console.error(err);
+        console.error(err)
       }).finally(() => {
-        setFormValues(initialFormValues);
+        setFormValues(initialFormValues)
       })
   }
 
@@ -81,6 +85,7 @@ function App() {
     
     schema.isValid(formValues).then(valid => setDisabled(!valid))
   }, [formValues])
+  
   return (
     <div >
       <header >
