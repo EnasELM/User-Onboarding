@@ -29,8 +29,8 @@ export default function UserForm(props) {
         <h2>Add a User</h2>
 
         {/*  DISABLE THE BUTTON */}
-        <button disabled={disabled}>submit</button>
-
+        <button disabled={disabled} name="btn" id='submitBtn'>submit</button>
+        
         <div >
           {/*  RENDER THE VALIDATION ERRORS HERE */}
           <div>{errors.username}</div>
