@@ -20,7 +20,7 @@ const initialFormErrors = {
  
 }
 const initialUsers = []
-const initialDisabled = false
+const initialDisabled = true
 function App() {
   const [users, setUsers] = useState(initialUsers)          // array of friend objects
   const [formValues, setFormValues] = useState(initialFormValues) // object
@@ -42,13 +42,16 @@ function App() {
   
     axios.post('https://reqres.in/api/users', newUser)
       .then(res => {
-        setUsers([res.data, ...users])
-        console.log('unewuuuuser')
-        console.log(newUser)
+        setUsers([...users,res.data])
+        console.log('users')
+        console.log(res)
+        
+       
+        
       }).catch(err => {
         console.error(err)
       }).finally(() => {
-        setFormValues(initialFormValues)
+        setFormValues(initialFormValues);
       })
   }
 
@@ -72,10 +75,11 @@ function App() {
       username: formValues.username.trim(),
       email: formValues.email.trim(),
       password: formValues.password.trim(),
-      agree: formValues.agree,
+     // agree: formValues.agree,
      
      
     }
+    postNewUser(newUser);
   }
 
   useEffect(() => {
@@ -106,7 +110,7 @@ function App() {
         })
       }
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

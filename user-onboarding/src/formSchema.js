@@ -13,8 +13,8 @@ const formSchema = yup.object().shape({
     password: yup
         .string()
         .trim()
-        .required('Username is required ya chump!')
-        .min(6, 'Username must be 3 or more characters long ya chump!'),
+        .required('password is required ya chump!')
+        .min(6, 'password must be 6 or more characters long ya chump!'),
     agree: yup.boolean()
     
 });
