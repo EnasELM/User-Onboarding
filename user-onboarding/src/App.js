@@ -43,8 +43,7 @@ function App() {
     axios.post('https://reqres.in/api/users', newUser)
       .then(res => {
         setUsers([...users,res.data])
-        console.log('users')
-        console.log(res)
+        
         
        
         
