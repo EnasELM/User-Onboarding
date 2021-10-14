@@ -16,9 +16,12 @@ export default function UserForm(props) {
   const onChange = evt => {
     
     const { name, value, checked, type } = evt.target;
-    console.log(evt.target.type);
+    console.log(evt.target);
+
     const valueToUse = type === 'checkbox' ? checked : value;
     change(name, valueToUse);
+    console.log(name);
+    console.log(valueToUse);
   }
   return (
     <form  onSubmit={onSubmit}>
@@ -30,7 +33,7 @@ export default function UserForm(props) {
 
         <div >
           {/*  RENDER THE VALIDATION ERRORS HERE */}
-          <div>{errors.name}</div>
+          <div>{errors.username}</div>
           <div>{errors.email}</div>
           <div>{errors.password}</div>
         </div>

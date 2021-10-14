@@ -44,7 +44,6 @@ function App() {
       .then(res => {
         setUsers([...users,res.data])
         
-        
        
         
       }).catch(err => {
@@ -59,6 +58,7 @@ function App() {
       .validate(value)
       .then(() => setFormErrors({ ...formErrors, [name]: '' }))
       .catch(err => setFormErrors({ ...formErrors, [name]: err.errors[0] }))
+      
   }
 
   const inputChange = (name, value) => {
@@ -67,6 +67,7 @@ function App() {
       ...formValues,
       [name]: value 
     })
+   
   }
 
   const formSubmit = () => {
@@ -74,14 +75,17 @@ function App() {
       username: formValues.username.trim(),
       email: formValues.email.trim(),
       password: formValues.password.trim(),
-     // agree: formValues.agree,
+
+     agree: formValues.agree,
      
      
     }
     postNewUser(newUser);
+    
   }
 
   useEffect(() => {
+   
     getUsers()
   }, [])
   useEffect(() => {
